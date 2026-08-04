@@ -55,12 +55,9 @@ I design and build scalable web, mobile, and cloud applications with a strong fo
 
 ---
 
-## 📊 GitHub Stats
+## 🔥 Contribution Streak
 
 <div align="center">
-
-<img height="165" alt="Ousmane Coulibaly's GitHub stats" src="https://github-readme-stats.vercel.app/api?username=goncoolio&show_icons=true&include_all_commits=true&count_private=true&theme=tokyonight&hide_border=true" />
-<img height="165" alt="Top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=goncoolio&layout=compact&langs_count=8&theme=tokyonight&hide_border=true" />
 
 <img alt="GitHub streak" src="https://streak-stats.demolab.com?user=goncoolio&theme=tokyonight&hide_border=true" />
 
