@@ -1,0 +1,58 @@
+name: Roll contribution window
+
+# Keeps the streak card's starting_year at "current year - 2", so the
+# Total Contributions panel always covers a three-year window with the
+# current year included.
+#
+# Runs monthly rather than annually on purpose: the job is idempotent and
+# only commits when the year actually changes, so a monthly schedule gives
+# twelve chances to catch up if a run is missed or the schedule is paused.
+
+on:
+  schedule:
+    - cron: '0 3 1 * *' # 03:00 UTC on the 1st of every month
+  workflow_dispatch: # allows running it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  roll:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Roll starting_year to current year - 2
+        id: roll
+        run: |
+          set -euo pipefail
+
+          if ! grep -q 'starting_year=[0-9]\{4\}' README.md; then
+            echo "No starting_year found in README.md, nothing to do."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          current="$(grep -m1 -o 'starting_year=[0-9]\{4\}' README.md | cut -d= -f2)"
+          wanted="$(( $(date -u +%Y) - 2 ))"
+
+          if [ "$current" = "$wanted" ]; then
+            echo "Already starting at $current, nothing to do."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          sed -i "s/starting_year=[0-9]\{4\}/starting_year=${wanted}/g" README.md
+          echo "Rolled starting_year from $current to $wanted."
+          echo "wanted=$wanted" >> "$GITHUB_OUTPUT"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push
+        if: steps.roll.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          git config user.name "Ousmane Coulibaly"
+          git config user.email "goncoolio@gmail.com"
+          git add README.md
+          git commit -m "Roll the contribution window to start in ${{ steps.roll.outputs.wanted }}"
+          git push
