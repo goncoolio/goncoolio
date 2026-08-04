@@ -59,7 +59,8 @@ I design and build scalable web, mobile, and cloud applications with a strong fo
 
 <div align="center">
 
-<img alt="GitHub streak" src="https://streak-stats.demolab.com?user=goncoolio&theme=tokyonight&hide_border=true" />
+<!-- Rolling 3-year window (current year included): bump starting_year by one each January. -->
+<img alt="GitHub streak" src="https://streak-stats.demolab.com?user=goncoolio&theme=tokyonight&hide_border=true&starting_year=2024" />
 
 </div>
 
