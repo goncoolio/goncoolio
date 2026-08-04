@@ -59,16 +59,8 @@ I design and build scalable web, mobile, and cloud applications with a strong fo
 
 <div align="center">
 
-<!-- Rolling 3-year window (current year included): bump starting_year by one each January. -->
+<!-- starting_year is rolled automatically by .github/workflows/rolling-contribution-window.yml -->
 <img alt="GitHub streak" src="https://streak-stats.demolab.com?user=goncoolio&theme=tokyonight&hide_border=true&starting_year=2024" />
-
-</div>
-
-## 🏆 GitHub Trophies
-
-<div align="center">
-
-<img alt="GitHub trophies" src="https://github-profile-trophy.vercel.app/?username=goncoolio&theme=tokyonight&no-frame=true&column=7&margin-w=8&margin-h=8" />
 
 </div>
 
